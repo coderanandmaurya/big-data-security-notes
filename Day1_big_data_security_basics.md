@@ -276,8 +276,23 @@ Guardium monitors:
 
 ---
 
+## 👤 Author & Contributors
+
+**Primary Maintainer:** [Anand Maurya](https://github.com/coderanandmaurya)
 
 ✅ **Last Updated**: July 30, 2025  
-✍️ **Author**: [Your Name]  
-🌐 **GitHub Repo**: _Add this file to your GitHub README_
+
+This repository is maintained as a public educational resource.  
+Feel free to fork, star ⭐, and contribute to improve its quality and reach!
+
+---
+
+## 📝 Attribution & Disclaimer
+
+This project references **IBM Guardium** to demonstrate data protection practices in real-world enterprise environments.  
+
+**IBM Guardium** is a product and trademark of **International Business Machines Corporation (IBM)**.  
+All product names, trademarks, and registered trademarks are the property of their respective owners.
+
+> ⚠️ This repository is not affiliated with or endorsed by IBM. It is intended solely for educational and non-commercial purposes.
 
