@@ -91,6 +91,19 @@ Systems monitor and send alerts for suspicious activity.
 
 ---
 
+## 📚 Glossary of Key Terms
+
+| Term      | Full Form & Meaning |
+|-----------|----------------------|
+| **OWASP** | Open Web Application Security Project – Publishes Top 10 web security risks |
+| **SANS**  | SysAdmin, Audit, Network, Security – Top 25 most dangerous coding errors |
+| **GDPR**  | General Data Protection Regulation – EU data protection law |
+| **HIPAA** | Health Insurance Portability and Accountability Act – US health data protection |
+| **SOX**   | Sarbanes-Oxley Act – US corporate financial reporting law |
+| **PCI-DSS** | Payment Card Industry Data Security Standard – Protects cardholder data |
+
+---
+
 ## 🟢 UNIT II: Web Application Security
 
 ### 1. What is Web Application Security?
@@ -263,18 +276,6 @@ Guardium monitors:
 
 ---
 
-## 📚 Glossary of Key Terms
-
-| Term      | Full Form & Meaning |
-|-----------|----------------------|
-| **OWASP** | Open Web Application Security Project – Publishes Top 10 web security risks |
-| **SANS**  | SysAdmin, Audit, Network, Security – Top 25 most dangerous coding errors |
-| **GDPR**  | General Data Protection Regulation – EU data protection law |
-| **HIPAA** | Health Insurance Portability and Accountability Act – US health data protection |
-| **SOX**   | Sarbanes-Oxley Act – US corporate financial reporting law |
-| **PCI-DSS** | Payment Card Industry Data Security Standard – Protects cardholder data |
-
----
 
 ✅ **Last Updated**: July 30, 2025  
 ✍️ **Author**: [Your Name]  
