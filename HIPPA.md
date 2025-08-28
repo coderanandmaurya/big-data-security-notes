@@ -1,5 +1,3 @@
----
-
 ## **Part 1 – Introduction to HIPAA (15 mins)**
 
 **Lecture Content:**
@@ -230,14 +228,4 @@
 * Compliance = Training, Encryption, Policies.
 
 📌 **Final Quiz (5 Questions)** for quick revision.
-
----
-
-# 🎤 Instructor Notes
-
-* Use **real breach stories** to grab attention.
-* Keep the class interactive with **quizzes, role plays, discussions**.
-* Encourage students to share *real-life observations* of possible HIPAA violations.
-
----
 
