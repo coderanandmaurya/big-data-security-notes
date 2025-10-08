@@ -135,9 +135,78 @@ Students must know each scan type semantics and when to use them:
 * `-D DECAY` **decoy** — sends decoy traffic to obfuscate true source (teaches about attribution and how defenders detect false positives).
 * `-S` **spoof source address** — requires careful network setup; can break things and causes attribution issues (teach only as theory).
 
-> Instructor note: evasion flags are interesting to teach about detection & forensics — but do **not** let students use them on networks you don’t control.
 
----
+Nmap (Network Mapper) is a powerful tool for network scanning and security auditing. Below are some basic Nmap commands to get you started, along with brief explanations:
+
+1. **Basic Scan (Ping Scan)**  
+   ```bash:disable-run
+   nmap [target]
+   ```
+   - Scans the target (IP or hostname) to check if hosts are up by sending ICMP echo requests (ping).  
+   - Example: `nmap 192.168.1.1`
+
+2. **Scan a Single Host with Port Details**  
+   ```bash
+   nmap -sS [target]
+   ```
+   - Performs a TCP SYN scan (stealth scan) to identify open ports on the target.  
+   - Example: `nmap -sS 192.168.1.1`
+
+3. **Scan a Range of IPs**  
+   ```bash
+   nmap [IP_range]
+   ```
+   - Scans a range of IP addresses (e.g., 192.168.1.1-254).  
+   - Example: `nmap 192.168.1.1-100`
+
+4. **Scan Specific Ports**  
+   ```bash
+   nmap -p [port(s)] [target]
+   ```
+   - Scans specific ports or a range of ports (e.g., 80, 443, or 1-1000).  
+   - Example: `nmap -p 80,443 192.168.1.1`
+
+5. **Service Version Detection**  
+   ```bash
+   nmap -sV [target]
+   ```
+   - Identifies the versions of services running on open ports.  
+   - Example: `nmap -sV 192.168.1.1`
+
+6. **Operating System Detection**  
+   ```bash
+   nmap -O [target]
+   ```
+   - Attempts to identify the operating system and its version on the target.  
+   - Example: `nmap -O 192.168.1.1`
+
+7. **Aggressive Scan (Combines Multiple Scans)**  
+   ```bash
+   nmap -A [target]
+   ```
+   - Performs an aggressive scan, including OS detection, version scanning, script scanning, and traceroute.  
+   - Example: `nmap -A 192.168.1.1`
+
+8. **Scan for UDP Ports**  
+   ```bash
+   nmap -sU [target]
+   ```
+   - Scans for open UDP ports (slower than TCP scans).  
+   - Example: `nmap -sU 192.168.1.1`
+
+9. **Fast Scan (Top 100 Ports)**  
+   ```bash
+   nmap -F [target]
+   ```
+   - Scans the 100 most common ports for faster results.  
+   - Example: `nmap -F 192.168.1.1`
+
+10. **Save Output to a File**  
+    ```bash
+    nmap -oN [filename] [target]
+    ```
+    - Saves the scan results to a text file.  
+    - Example: `nmap -oN scan_results.txt 192.168.1.1`
 
 # 6. Nmap Scripting Engine (NSE) — powerful and safe script examples
 
