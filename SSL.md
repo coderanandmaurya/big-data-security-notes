@@ -19,6 +19,182 @@ SSL (Secure Sockets Layer) is a **security protocol** that establishes an **encr
 * VPNs
 
 ---
+Perfect! Let’s do a **full step-by-step guide** on **Windows**, starting from **installing OpenSSL**, then creating, encrypting, decrypting, and verifying a CSV. I’ll make it **easy to copy and run**.
+
+We’ll assume your working folder is:
+
+```
+E:\sample
+```
+
+---
+
+## **Step 1: Install OpenSSL on Windows**
+
+1. **Download OpenSSL**
+   Go to: [https://slproweb.com/products/Win32OpenSSL.html](https://slproweb.com/products/Win32OpenSSL.html)
+
+   * Download **Win64 OpenSSL Light** (for 64-bit Windows).
+
+2. **Run the installer**
+
+   * Accept the license agreement.
+   * Install to default folder (e.g., `C:\Program Files\OpenSSL-Win64`).
+   * When asked about DLLs, choose **“Copy OpenSSL DLL files to the OpenSSL binaries folder”**.
+
+3. **Add OpenSSL to PATH**
+
+   * Press **Win + S → Environment Variables → Edit system environment variables → Environment Variables**
+   * Under **System variables**, select **Path → Edit → New**, and add:
+
+     ```
+     C:\Program Files\OpenSSL-Win64\bin
+     ```
+   * Click **OK** to save.
+   * Open a **new Command Prompt or PowerShell** to apply changes.
+
+4. **Verify installation**
+
+   ```cmd
+   openssl version
+   ```
+
+   You should see something like:
+
+   ```
+   OpenSSL 3.1.0  7 Apr 2023
+   ```
+
+---
+
+## **Step 2: Create a Sample CSV**
+
+Open **PowerShell** and run:
+
+```powershell
+# Create folder if it doesn't exist
+New-Item -ItemType Directory -Force -Path E:\sample
+
+# Create sample CSV
+@"
+id,name,email
+1,Alice,alice@example.com
+2,Bob,bob@example.com
+3,Charlie,charlie@example.com
+"@ | Out-File -FilePath E:\sample\sample.csv -Encoding ascii
+```
+
+Check the contents:
+
+```powershell
+Get-Content E:\sample\sample.csv
+```
+
+Expected output:
+
+```
+id,name,email
+1,Alice,alice@example.com
+2,Bob,bob@example.com
+3,Charlie,charlie@example.com
+```
+
+---
+
+## **Step 3: Encrypt the CSV with OpenSSL**
+
+Open **Command Prompt or PowerShell** and run:
+
+```cmd
+openssl enc -aes-256-cbc -pbkdf2 -iter 100000 -salt -in E:\sample\sample.csv -out E:\sample\sample.csv.enc
+```
+
+* You’ll be prompted:
+
+```
+enter AES-256-CBC encryption password:
+verify AES-256-CBC encryption password:
+```
+
+* **Type a strong password** and retype it.
+* This creates:
+
+```
+E:\sample\sample.csv.enc
+```
+
+> Tip: File is binary; opening in Notepad shows unreadable characters.
+
+---
+
+## **Step 4: Decrypt the CSV**
+
+```cmd
+openssl enc -d -aes-256-cbc -pbkdf2 -iter 100000 -in E:\sample\sample.csv.enc -out E:\sample\sample_decrypted.csv
+```
+
+* Enter the **same password** used for encryption.
+* This creates:
+
+```
+E:\sample\sample_decrypted.csv
+```
+
+---
+
+## **Step 5: Verify the Decrypted CSV**
+
+```powershell
+Get-Content E:\sample\sample_decrypted.csv
+```
+
+Output should match the original:
+
+```
+id,name,email
+1,Alice,alice@example.com
+2,Bob,bob@example.com
+3,Charlie,charlie@example.com
+```
+
+Optional: Compare original and decrypted files:
+
+```powershell
+Compare-Object (Get-Content E:\sample\sample.csv) (Get-Content E:\sample\sample_decrypted.csv)
+```
+
+* **No output** → files match perfectly.
+
+---
+
+## **Step 6: Optional Non-Interactive Encryption (Automation)**
+
+> **Warning:** Passing passwords in command line can expose them in history.
+
+```cmd
+openssl enc -aes-256-cbc -pbkdf2 -iter 100000 -salt -pass pass:MyS3cretP@ss -in E:\sample\sample.csv -out E:\sample\sample.csv.enc
+```
+
+Or safer using environment variable:
+
+```powershell
+$env:MY_PASS="MyS3cretP@ss"
+openssl enc -aes-256-cbc -pbkdf2 -iter 100000 -salt -pass env:MY_PASS -in E:\sample\sample.csv -out E:\sample\sample.csv.enc
+```
+
+---
+
+✅ **Now you have a complete workflow:**
+
+1. Install OpenSSL
+2. Create CSV
+3. Encrypt CSV → `.enc` file
+4. Decrypt CSV → `.csv` file
+5. Verify contents
+
+---
+
+
 
 ## **2. Why SSL is Important**
 
