@@ -337,4 +337,3 @@ TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 ---
 
 
-Do you want me to create that **SSL visual diagram** next?
